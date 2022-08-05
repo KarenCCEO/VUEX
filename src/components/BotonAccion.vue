@@ -1,8 +1,13 @@
 <template>
-  <button>{{textoButon}}</button>
+<!--
+    EL ESTADO Y EL NUMERO SE ENCUENTRAN DENTRO DE UN OBJETO
+-->
+  <button 
+  @click="accionBoton({estado: estado, numero: 15})">{{textoButon}}</button>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
     props:{
         estado:Boolean
@@ -12,6 +17,10 @@ export default {
             //si el estado es verdadero entonces escribe aumentar si es falso entonces escribe disminuir
             return this.estado ? 'Aumentar' : 'Disminuir'
         }
+    },
+    methods:{
+        ...mapActions(['accionBoton'])
+
     }
 
 }

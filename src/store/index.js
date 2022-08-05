@@ -14,8 +14,11 @@ export default createStore({
     incrementarS(state, payload){
       state.contador = state.contador + payload
     },
-    //payload es el valor que recibe la funcion
     decrementar(state, payload){
+      state.contador = state.contador - payload
+    },
+    //payload es el valor que recibe la funcion
+    disminuir(state, payload){
       state.contador =state.contador -payload
     },
     decrementarS(state){
@@ -31,7 +34,7 @@ export default createStore({
 
     },
     accionIncrementarS({commit}){
-      commit('incrementar', 10)
+      commit('incrementarS', 10)
 
     },
     //disminuir con parametro 
@@ -44,11 +47,12 @@ export default createStore({
 
       commit('decrementar', numero)
     },
-    accionBoton({commit}, objeto){
+    //cuando se manda mas de un parametro se hace con un objeto 
+    accionBoton({ commit }, objeto){
       if(objeto.estado){
-        commit('incrementar', objeto.numero )
+        commit('incrementarS', objeto.numero )
       } else{
-        commit
+        commit('disminuir', objeto.numero )
       }
 
     }
